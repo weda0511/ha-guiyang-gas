@@ -1,0 +1,38 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "description": "抓包微信公众号「贵阳燃气」网上营业厅(bc.shulianhuiyun.com)后, 运行 tools/gy_gas_probe.py 会生成 gy_gas_config.json, 按其中的值填写即可。",
+        "data": {
+          "acct_id": "燃气户号(acctId)",
+          "method": "请求方法",
+          "url": "账单列表接口 URL(getBillList)",
+          "amt_url": "欠费/余额接口 URL(getOpayAmt)",
+          "meter_url": "抄表接口 URL(userucuser/list)",
+          "headers": "请求头(JSON): tenantId/tenantCode/token",
+          "body": "请求体模板(支持 {acct_id} 占位符)",
+          "root_path": "账单数据对象路径(默认 data.bsegList.bseg[-1])",
+          "field_map": "字段映射(JSON), 留空用默认值",
+          "scan_interval": "轮询间隔(秒, 最小 600)"
+        }
+      },
+      "reauth_confirm": {
+        "description": "token 已失效。重新抓包后把新的 tenantId/tenantCode/token 粘贴到这里。",
+        "data": {
+          "headers": "请求头(JSON)",
+          "url": "账单接口 URL(没变可留空)",
+          "amt_url": "欠费接口 URL(没变可留空)",
+          "meter_url": "抄表接口 URL(没变可留空)"
+        }
+      }
+    },
+    "error": {
+      "bad_json": "不是合法的 JSON, 请检查引号和逗号",
+      "not_json_object": "必须是 JSON 对象 { }",
+      "cannot_connect": "无法连接到接口"
+    },
+    "abort": {
+      "reauth_successful": "登录态已更新"
+    }
+  }
+}

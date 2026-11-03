@@ -1,0 +1,11 @@
+{
+  "domain": "gy_gas",
+  "name": "贵阳燃气(数联慧云)",
+  "version": "0.1.0",
+  "documentation": "https://github.com/weda0511/ha-guiyang-gas",
+  "codeowners": ["@weda0511"],
+  "config_flow": true,
+  "integration_type": "service",
+  "iot_class": "cloud_polling",
+  "requirements": []
+}

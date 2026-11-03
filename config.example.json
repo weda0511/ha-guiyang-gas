@@ -1,0 +1,39 @@
+{
+  "_说明": "示例配置: 运行 tools/gy_gas_probe.py 可从抓包文件自动生成真实配置; 请把 <占位符> 换成你自己的值, 切勿提交到任何仓库",
+  "acct_id": "<你的燃气户号 acctId, 10位数字>",
+  "method": "GET",
+  "url": "https://bc.shulianhuiyun.com/business-hall-admin/user/customerbilling/getBillList?dateStart=20240101&dateEnd=20991231&acctId=<你的户号>",
+  "amt_url": "https://bc.shulianhuiyun.com/business-hall-admin/user/customerbilling/getOpayAmt?acctId=<你的户号>",
+  "meter_url": "https://bc.shulianhuiyun.com/business-hall-admin/user/userucuser/list?ucUserId=<你的openid>&gasUserNumber=&state=1&flag=true",
+  "headers": {
+    "tenantId": "1549700407420260355",
+    "tenantCode": "10000001",
+    "token": "<抓包获得的登录 token, 失效后重新抓>"
+  },
+  "body": "",
+  "root_path": "data.bsegList.bseg[-1]",
+  "field_map": {
+    "bill_amt": "bsegAmt",
+    "usage": "mtrList[0].bsegQty",
+    "reading": "mtrList[0].endBsegReading",
+    "last_reading": "mtrList[0].startBsegReading",
+    "period_start": "startDate",
+    "period_end": "endDate",
+    "bill_date": "billDttm",
+    "payoff": "payoffFlg",
+    "bill_state": "state",
+    "due": "@amt:data.opayAmt",
+    "gas_fee": "@amt:data.cmGasAmt",
+    "late_fee": "@amt:data.cmLpcAmt",
+    "other_fee": "@amt:data.cmOtherAmt",
+    "balance": "@amt:data.cmAcctNum",
+    "amt_date": "@amt:data.amtDate",
+    "cur_reading": "@meter:rows[0].spInfoList[0].curBsegReading",
+    "cur_read_date": "@meter:rows[0].spInfoList[0].curBsegDt",
+    "user_name": "@meter:rows[0].userName",
+    "address": "@meter:rows[0].gasAddress",
+    "meter_no": "@meter:rows[0].gasMeterNumber"
+  },
+  "scan_interval": 21600,
+  "_字段前缀说明": "@amt: 取自欠费接口 getOpayAmt; @meter: 取自抄表接口 userucuser/list; 无前缀取自账单接口"
+}

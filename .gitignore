@@ -1,0 +1,11 @@
+# 抓包产物与本机真实配置, 一律不入库
+gy_gas_config.json
+config.json
+*.har
+capture*.curl
+*.har.tmp
+
+# Python
+__pycache__/
+*.pyc
+.venv/

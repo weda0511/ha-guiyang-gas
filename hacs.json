@@ -1,0 +1,6 @@
+{
+  "name": "贵阳燃气 (Guiyang Gas)",
+  "render_readme": true,
+  "homeassistant": "2022.7.0",
+  "iot_class": "cloud_polling"
+}
